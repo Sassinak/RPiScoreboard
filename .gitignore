@@ -1,0 +1,8 @@
+#ignore files ending in ~
+*~
+
+#also
+
+*.pyc
+__pycache__/
+.stversions/
