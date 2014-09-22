@@ -1,0 +1,73 @@
+
+    var clockDisplay = new SegmentDisplay("canClock");
+    clockDisplay.pattern         = "##:##"; 
+    
+    var periode = new SegmentDisplay("canPeriode");
+    periode.pattern		= "#";    
+        
+    var vis =  new SegmentDisplay("canVis");
+    vis.pattern         = "##";   
+    
+    var home =  new SegmentDisplay("canHome");
+    home.pattern        = "##";
+	
+	var countdown = true;
+	
+	
+    animate();
+	
+
+function btnStopClick(){
+	countdown = false;
+
+}
+
+function btnGoClick(){
+	countdown = true;
+}
+    
+
+function parseTime(time)
+{
+	var second = time % 60;
+	var minute = Math.floor(time / 60) % 60;
+	var hour = Math.floor(time / 3600) % 60;
+	
+	second = (second < 10) ? '0'+second : second;
+	minute = (minute < 10) ? '0'+minute : minute;
+	hour = (hour < 10) ? '0'+hour : hour;
+}
+
+function display(){
+				
+	vis.setValue('05');
+	home.setValue('12');
+	periode.setValue('3');
+}
+function ganimate(){
+	var second = timer.generateTime.second;
+	var minute = timer.generateTime.minute;
+	var value   = ((minutes < 10) ? '0' : '') + minutes
+				+ ':' + ((seconds < 10) ? '0' : '') + seconds;
+	clockDisplay.setValue(value);
+	
+	display();
+	window.setTimeout('animate()',100);
+}
+function animate() {
+	
+	var time    = new Date();
+	var minutes;
+	var seconds;	
+	if (countdown == true){		
+		minutes = time.getMinutes();
+		seconds = time.getSeconds();
+		}
+	
+	var value   = ((minutes < 10) ? '0' : '') + minutes
+					+ ':' + ((seconds < 10) ? '0' : '') + seconds;
+					
+	clockDisplay.setValue(value);
+	display();
+	window.setTimeout('animate()', 100);
+}
