@@ -46,7 +46,6 @@ function setupWebiopi(){
 
 function callMacro(){	// dans script.py
 	webiopi().callMacro("SOSSequence",sequence);
-	//alert("string = " + etat.toString());
 }
 function callMacroSerial(){
 	var args = etat.toString();  //["sequence?"];
@@ -55,7 +54,6 @@ function callMacroSerial(){
 	webiopi().callMacro("serialTX",args, printSerial);
 }
 function printSerial(macro, args, data){
-	//alert(data);
 	var d = $("#output").text() + data + "\n";
 	$("#output").text(d);
 }
