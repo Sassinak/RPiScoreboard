@@ -43,37 +43,17 @@ def destroy():
 @webiopi.macro
 def SOSSequence(sequence):
 	GPIO.outputSequence(SEQ, 100, sequence)
-
-@webiopi.macro
-def serialTX(etat):        #solution bytearray
-	data = ""
-	dataTx = b''
-	
-	etat = re.sub('[:]', '', etat)     #typiquement "025402033"
-	dataTx = bytearray(etat,"utf-8")	
-	dataTx = b'0a' + binascii.b2a_hex(dataTx)  #typiquement b'30323534303230333'
-	dataTx += b'0d'
-	serial.writeBytes(dataTx) # write a byte array
-	webiopi.sleep(1)
-	
-	if(serial.available() > 0):      #decodage pour tests avec loopback
-		datas = serial.readBytes(22) # LF + 9Xdata + CR = 11. X2 = 22
-		datas = binascii.a2b_hex(datas)
-		data = datas.decode("utf-8")
-		#data+=", ".join("0x%X" % i for i in datas)
-	return data
 	
 @webiopi.macro
-def serialTXbak(etat):           #solution en string
-	txdata = "LF "		# LF ici (10 ou 0xA)
-	txString = re.sub('[:]', '', etat)
-	for c in txString:
-		txdata += str(int(c) + 30); #extraire int, ajouter 30, ajouter a la string
-		txdata += " "
-	txdata += "CR"		# CR (13 ou 0xD)
+def serialTX(etat):           #solution en string
+	etat = re.sub('[:]', '', etat)
+	
+	txdata = "\n"		# LF ici (10 ou 0xA)	
+	txdata += etat
+	txdata += "\r"		# CR (13 ou 0xD)
 	serial.writeString(txdata)       # write a string
 
-	data = ""
+	data = "niet"
 	webiopi.sleep(1)				#sinon delai dans les donnees, bizarre
 	
 	if (serial.available() > 0):

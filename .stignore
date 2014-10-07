@@ -1,0 +1,6 @@
+//gnore these files
+*~
+//.git
+*.pyc
+__pycache__
+
