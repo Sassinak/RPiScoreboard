@@ -12,9 +12,17 @@ body{
 /*Clock */
 #clock{
 	background-color:#FFA500;
+	
 }
 #canClock{
-	width: 100%;
+	float: left;
+	width: 90%;
+	height: auto;
+	margin: auto;
+}
+#clockControls{
+	float: left;
+	width: 9%;
 	height: auto;
 	margin: auto;
 }

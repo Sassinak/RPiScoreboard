@@ -2,9 +2,7 @@
 	var clockDisplay = new SegmentDisplay("canClock");
 	clockDisplay.pattern         = "##:##";
 	var CCOUNT = (60 * 2) +1;	// 10mins
-	var timer, count;
-
-	count = CCOUNT;
+	var timer, count;	
 
 	var periode = new SegmentDisplay("canPeriode");
 	periode.pattern		= "#";
@@ -40,7 +38,7 @@
 function setupWebiopi(){
 	webiopi().setFunction(9,"out");	
 	sequence = "01010100110011001100101010";	
-	
+	count = CCOUNT;
 	display();
 }
 
@@ -73,6 +71,15 @@ function btnStopClick(){
 function btnGoClick(){
 	animate();
 }
+function btnPlusOneSecClick(){
+	count++;
+	display();
+}
+
+function btnMinusOneSecClick(){
+	count--;
+	display();
+	}
 
 function btnPeriodePlus(){
 	periodeValue++;
@@ -98,19 +105,18 @@ function btnVisiteurMoins(){
 	visScore--;
 	display();
 }
-function timerReset(){
-	timerPause();
+function btntimerReset(){
 	count = CCOUNT;
 	display();
 }
 function timerReset(time){
 	timerPause();
 	count = time;
-	display();
 }
 function timerPause(){
 	clearTimeout(timer);
 }
+
 
 function parseTime(time){
 	var second = time % 60;
