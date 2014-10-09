@@ -1,0 +1,6 @@
+TODO:
+
+- manage availability of go button to avoid "double-step"
+- include pause button
+- develop "re-set values" pop-up box if all goes wrong (limited ressources
+prevent me from using netbeans to do this, unsure how without it)
