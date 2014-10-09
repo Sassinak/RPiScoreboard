@@ -14,27 +14,13 @@
     <script type="text/javascript" src="/webiopi.js"></script>
     <script type="text/javascript">
 		webiopi().ready(function() {
-			webiopi().setFunction(10, "out");
 
-			var controls, button;
 			divWebiopi = $("#webiopi");
-
-			// create a "LED" labeled button for GPIO 10
-			button = webiopi().createGPIOButton(10, "LED1");
-			divWebiopi.append(button); // append button to divWebiopi div
-
-			//create a button which calls a different function for mouse down and up events
-			button = webiopi().createButton("hold", "Hold", mousedown, mouseup); //GPIO 9
-			divWebiopi.append(button);
-
-			//a button that uses a py script to toggle light
-			button = webiopi().createButton("macro","SOS",callMacro);
+			
+			// button for serial interface - using macro - prints TX-RX
+			button =  webiopi().createButton("Serial","TX", callMacroSerial);
 			divWebiopi.append(button);
 			
-			// button for serial interface - using macro
-			button =  webiopi().createButton("serial","serial", callMacroSerial);
-			divWebiopi.append(button);
-
 			//Refresh GPIO buttons
 			//pass "true" to refresh repeatedly or "false" to refresh once
 			webiopi().refreshGPIO(true);
@@ -48,17 +34,15 @@
 <div id="container">
 
 	<div id="clock">
-		<h1>Deck Hockey Québec</h1>
+		<h1>Dek Hockey Québec</h1>
 		<br><canvas id="canClock" ></canvas>
 		<div id="clockControls">
 			<img id="btnPlusOneSec" src="img/plusIcon.jpg" onclick="btnPlusOneSecClick()"></img>
 			<br><img id="btnMinusOneSec" src="img/minusIcon.jpg" onclick="btnMinusOneSecClick()"></img>
 			<br><img id="btnReset" src="img/reset.png" onclick="btntimerReset()"></img>
 		</div>
-	</div>
-	<!--clock -->
+	</div><!--clock -->
 
-	<!--<div id="infoBox"> -->
 		<div id="home" class="sidebox" >
 			<b>HOME</b>
 			<br><canvas id="canHome"  ></canvas>
@@ -77,7 +61,6 @@
 			<b>VISITOR</b>
 			<br><canvas id="canVis" ></canvas>
 		</div>
-	<!--</div>infobox -->
 
 	<div id="controls">
 		<div class="operations">
@@ -94,8 +77,7 @@
 		</div>
 	</div><!-- controls-->
 		<br>
-
-	<div id="webiopi">WebIOPi controls</div>
+	<div id="webiopi">WebIOPi controls - print out</div>
 		<textarea id="output" rows="5" cols="50" disabled="disabled"></textarea><br/>
 	
 	<div id="footer">
