@@ -1,6 +1,4 @@
 import re
-import binascii
-from binascii import a2b_hex, b2a_hex
 
 import webiopi
 from webiopi.devices.serial import Serial
@@ -41,10 +39,12 @@ def serialTX(etat):           #solution en string
 	txdata += "\r"		# CR (13 ou 0xD)
 	serial.writeString(txdata)       # write as string
 
-	data = "niet"
+	data = "niet"					#pour feedback visuel
 	webiopi.sleep(0.25)				#sinon delai dans les donnees, bizarre
 	
 	if (serial.available() > 0):
 		data = serial.readString()        # read available data as string
 	
 	return data
+	
+#a faire si approved : une sortie directement en PWM (si Pi assez puissant)

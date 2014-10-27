@@ -1,8 +1,9 @@
 
 	var clockDisplay = new SegmentDisplay("canClock");
 	clockDisplay.pattern         = "##:##";
-	var CCOUNT = (60 * 2) +1;	// 10mins
-	var timer, count;	
+	var CCOUNT = (60 * 2);	// 60sec X n minutes
+	var timer, count;
+	var marche;				//bool to avoid "double-time"	
 
 	var periode = new SegmentDisplay("canPeriode");
 	periode.pattern		= "#";
@@ -34,7 +35,9 @@
 
 function setupWebiopi(){	
 	count = CCOUNT;
-	display();
+	marche = false;
+	
+	display();	
 }
 
 function callMacroSerial(){
@@ -50,22 +53,24 @@ function printSerial(macro, args, data){
 
 //web UI calls
 function btnStopClick(){
+	marche = false;
 	clearTimeout(timer);
 }
 
 function btnGoClick(){
-	animate();
+	if (!marche){
+		marche = true;
+		animate();
+	}	
 }
 function btnPlusOneSecClick(){
 	count++;
 	display();
 }
-
 function btnMinusOneSecClick(){
 	count--;
 	display();
 	}
-
 function btnPeriodePlus(){
 	periodeValue++;
 	display();
@@ -91,14 +96,15 @@ function btnVisiteurMoins(){
 	display();
 }
 function btntimerReset(){
+	marche= false;
 	count = CCOUNT;
 	display();
 }
-function timerReset(time){
+function timerReset(time){	//option: set count to (time) w/pop-up
 	timerPause();
 	count = time;
 }
-function timerPause(){
+function timerPause(){	//same as stop
 	clearTimeout(timer);
 }
 
@@ -134,15 +140,19 @@ function display(){
 }
 
 function animate(){
+	
+	if(marche){
 
-	display();
+		display();
 
-	if (count == 0){
-		//time's up
-		alert('Time out');
+		if (count == 0){
+			//time's up
+			alert('Time out');
+			}
+		else {
+			count--;		
+			timer = setTimeout("animate()", 1000);	
 		}
-	else {
-		count--;
-		timer = setTimeout("animate()", 1000);
 	}
+	
 }
