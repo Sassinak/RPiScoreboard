@@ -1,4 +1,4 @@
-RPiScoreboard
+RPiScoreboard 
 =============
 
 A sports scoreboard controller on Raspberry Pi with website interface using WebIOPi
@@ -11,3 +11,4 @@ Signal : trame PWN  si Pi assez puissant pour driver le panneau;
 sinon sortie ascii et 
 Electronique realisée par Michel Pelletier  
 Avantage du projet: adaptabilité/accessibilité du code. 
+(ce projet attend du feedback des clients...)
