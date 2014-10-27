@@ -1,6 +1,9 @@
 TODO:
 
-- manage availability of go button to avoid "double-step"
-- include pause button
+- include pause button? stop acts as pause
+
 - develop "re-set values" pop-up box if all goes wrong (limited ressources
-prevent me from using netbeans to do this, unsure how without it)
+	prevent me from using netbeans to do this, unsure how without it) 
+	Considering simple popup instead of loading jquery...
+	
+- IF Pi can drive the score board, develop the PWN signal output. 
