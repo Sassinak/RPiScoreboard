@@ -7,3 +7,7 @@ TODO:
 	Considering simple popup instead of loading jquery...
 	
 - IF Pi can drive the score board, develop the PWN signal output. 
+	- webiopi no fine tuning for period time, only ratio
+	- convert string to PWN ?
+	- import RPIO.py ?
+	- git branch ?

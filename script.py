@@ -1,9 +1,16 @@
+# imports 
 import re
-
+import time
 import webiopi
 from webiopi.devices.serial import Serial
 
+#Enable debug output
+#webiopi.setDebug()
+
+#retrieve GPIO lib
 GPIO = webiopi.GPIO
+
+LED0 = 2
 
 serial = Serial("ttyAMA0", 9600)
 data = "niet"
@@ -13,14 +20,23 @@ def setup():
 	# empty input buffer before starting processing
 	if(serial.available() > 0):
 		serial.readString()
+	#PWN tests
+	GPIO.setFunction(LED0, GPIO.PWM)
+	GPIO.pwmWrite(LED0, 0.5)	# set to 50% ratio
 
 def loop():
-	#embetee: que mettre ici ? un led "en fonction" qui flashe ?
-
-    webiopi.sleep(5)
-
+	#PWM tests
+	GPIO.pwmWrite(LED0, 0.90)
+	#webiopi.sleep(0.25)
+	GPIO.pwmWrite(LED0, 0.30)
+	#webiopi.sleep(0.2)
+	GPIO.pwmWrite(LED0, 0.70)
+	webiopi.sleep(0.2)
+    
+    
 # destroy function is called at WebIOPi shutdown
-#def destroy():   ???
+def destroy():
+	GPIO.setFunction(LED0, GPIO.IN)
 
 
 # macro 
