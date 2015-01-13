@@ -24,7 +24,7 @@
 # Load custom scripts syntax :
 # name = sourcefile
 #   each sourcefile may have setup, loop and destroy functions and macros
-myscript = /home/pi/Documents/Scoreboard/script.py
+myscript = /home/pi/Documents/RPiScoreboard/script.py
 
 #------------------------------------------------------------------------#
 
@@ -41,7 +41,7 @@ passwd-file = /etc/webiopi/passwd
 prompt = "WebIOPi"
 
 # Use doc-root to change default HTML and resource files location
-doc-root = /home/pi/Documents/Scoreboard
+doc-root = /home/pi/Documents/RPiScoreboard
 # Use welcome-file to change the default "Welcome" file
 welcome-file = index.html
 
