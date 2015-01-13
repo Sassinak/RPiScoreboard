@@ -6,8 +6,7 @@ TODO:
 	prevent me from using netbeans to do this, unsure how without it) 
 	Considering simple popup instead of loading jquery...
 	
-- IF Pi can drive the score board, develop the PWN signal output. 
+- IF Arduino can data stream, develop the PWN signal output. 
 	- webiopi no fine tuning for period time, only ratio
-	- convert string to PWN ?
 	- import RPIO.py ?
 	- git branch ?
