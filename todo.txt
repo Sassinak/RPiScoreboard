@@ -1,12 +1,20 @@
 TODO:
 
-- include pause button? stop acts as pause
+- webiopi auto-start
 
-- develop "re-set values" pop-up box if all goes wrong (limited ressources
-	prevent me from using netbeans to do this, unsure how without it) 
-	Considering simple popup instead of loading jquery...
+- Rien-ne-va-plus reset Dialog box: 
+ if all goes wrong :
+	- Bouton appelle le dialogue
+	- Tous les champs sont presentés 
+		- avec valeurs courantes (!)
+	- on modifie les champs voulus
+	- sauvegarde: remplacement des valeurs courantes
+
+- bouton shutdown:
+	- eteint serveur webiopi: fait
+	- eteint raspi
+
+- bouton restart:
+	- restart webiopi
+ 
 	
-- IF Arduino can data stream, develop the PWN signal output. 
-	- webiopi no fine tuning for period time, only ratio
-	- import RPIO.py ?
-	- git branch ?

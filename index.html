@@ -20,6 +20,13 @@
 			// button for serial interface - using macro - prints TX-RX
 			button =  webiopi().createButton("Serial","TX", callMacroSerial);
 			divWebiopi.append(button);
+			//shutdown server
+			button = webiopi().createMacroButton("btnShutD","Shutdown","shutdown");
+			divWebiopi.append(button);
+			
+			//restart server
+			button = webiopi().createMacroButton("btnRestart","Restart","restartServer");
+			divWebiopi.append(button);
 			
 			//Refresh GPIO buttons
 			//pass "true" to refresh repeatedly or "false" to refresh once
@@ -76,12 +83,12 @@
 			<img id="btnPlus" src="img/plusIcon.jpg" onclick="btnVisiteurPlus()"></img>
 		</div>
 	</div><!-- controls-->
-		<br>
+		<br> 
 	<div id="webiopi">WebIOPi controls - print out</div>
-		<textarea id="output" rows="5" cols="50" disabled="disabled"></textarea><br/>
+		<textarea id="output" title="tx text area" rows="5" cols="50" disabled="disabled"></textarea><br/>
 	
 	<div id="footer">
-	Copyright © Anabel David 2014
+	Copyright © Anabel David 2014-2015
 	</div> <!--footer -->
 
 </div> <!-- container-->

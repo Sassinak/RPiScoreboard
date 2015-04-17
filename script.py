@@ -1,4 +1,6 @@
 import re
+import subprocess
+from subprocess import call, Popen
 
 import webiopi
 from webiopi.devices.serial import Serial
@@ -6,25 +8,25 @@ from webiopi.devices.serial import Serial
 GPIO = webiopi.GPIO
 
 serial = Serial("ttyAMA0", 9600)
-data = "niet"
+data = "nada"
 
 #setup called auto at webiopi startup
 def setup():
 	# empty input buffer before starting processing
+	print ("script.py")
 	if(serial.available() > 0):
 		serial.readString()
 
 def loop():
 	#embetee: que mettre ici ? un led "en fonction" qui flashe ?
 
-    webiopi.sleep(5)
+    webiopi.sleep(1)
 
 # destroy function is called at WebIOPi shutdown
-#def destroy():   rien
-
-
-# macro 
+#def destroy():
 	
+
+# macro 	
 @webiopi.macro
 def serialTX(etat):           #solution en string
 	
@@ -47,4 +49,26 @@ def serialTX(etat):           #solution en string
 	
 	return data
 	
-#a faire si approved : une sortie directement en PWM (si Pi assez puissant)
+@webiopi.macro
+def shutdown():
+	#fermer tout
+	print ("macro shutdown")
+	command = "/usr/bin/sudo /etc/init.d/webiopi stop"
+	proc = subprocess.Popen(command.split(),stdout=subprocess.PIPE)
+	print ("macro executed?")
+	
+@webiopi.macro
+def restartServer():
+	#repart Webiopi 
+	print("macro restart webiopi")
+	command = "/usr/bin/sudo /etc/init.d/webiopi restart"
+	proc = subprocess.Popen(command.split(),stdout=subprocess.PIPE)
+	print ("macro executed?")
+	
+
+	
+	
+
+
+
+	
